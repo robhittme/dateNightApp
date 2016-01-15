@@ -97,23 +97,20 @@ module.exports = function(app) {
 
     app.post('/query/', function(req, res){
 
-       var searchCuisine = req.body.cuisine;
+       var searchCuisine = JSON.stringify(req.body.cuisine);
 
        console.log("SEARCH CUISINE: " + searchCuisine);
-       console.log("REQ.BODY: " + req.body);
+       console.log("REQ.BODY: " + req.body.cuisine);
 
        // Restaurant.$where('cuisine' === searchCuisine).exec(function(err, results){
        //   console.log(results);
        // });
 
 
-        var query = Restaurant.where({ cuisine: searchCuisine});
-
-        query.findOne(function(err, restaurant){
-            if(err) return handleError(err);
-            if(restaurant){
-                console.log('RESTAURANTS: ' + restaurant);
-            };
+        Restaurant.find({'cuisine': req.body.cuisine}, 'name address cuisine', function(err, restaurants){
+            console.log("RESTAURANT: " + restaurants);
+         
+            res.json(restaurants);
         })
        // if(cuisine){
        //      query = query.where('cuisine').equals(searchCuisine);
