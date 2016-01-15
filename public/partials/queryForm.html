@@ -1,0 +1,38 @@
+<!-- queryForm.html -->
+
+<!-- Find Teammates (Query) Form -->
+<div class="col-md-5">
+
+    <!-- Creates Main Panel -->
+    <div class="panel panel-default">
+
+        <!-- Panel Title -->
+        <div class="panel-heading">
+            <h2 class="panel-title text-center">Find Teammates! (Map Query) <span class="glyphicon glyphicon-search"></span></h2>
+        </div>
+
+        <!-- Panel Body -->
+        <div class="panel-body">
+
+            <!-- Creates Form -->
+            <form name ="queryForm">
+
+        
+                <!-- Note ng-true-value which translates check values into explicit gender strings -->
+            
+                <div class="form-group">
+                    <input type="text" class="form-control" id="cuisineSearch" placeholder="cuisine" ng-model="formData.cuisine">
+                </div>
+
+
+                <!-- Query button. Note that its tied to queryUsers() function from queryCtrl.  -->
+                <button type="submit" class="btn btn-danger btn-block" ng-click="queryRestaurants()">Search</button>
+            </form>
+        </div>
+
+        <!-- Footer panel for displaying count. Note how it will only display if queryCount is greater than 0 -->
+        <div ng-show="queryCount>0" class="panel-footer">
+            <p class="text-center">Hot Dang! We Found {{queryCount}} Teammates.</p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,48 @@
+<!-- restaurantList.html -->
+        
+<div class="col-md-5">
+
+    <!-- Creates Main Panel -->
+    <div class="panel panel-default" ng-init="showEdit=false">
+
+        <!-- Panel Title -->
+        <div class="panel-heading">
+            <h2 class="panel-title text-center">View All Restaurants <span class="glyphicon glyphicon-map-marker"></span></h2> 
+        </div>
+
+        <!-- Panel Body -->
+        <div class="panel-body">
+            <div>
+                <ol ng-init="showEdit=false; restaurantList = true;">
+                    <li ng-repeat="restaurant in restaurants">
+                        <div>
+                            <div ng-show="restaurantList">
+                                <h4>{{restaurant.name}}<span><button class="pull-right" ng-click="deleteRestaurant(restaurant)"><span class="glyphicon glyphicon-remove"></span></button>
+                                    <button class="pull-right" ng-click="showEdit = true; restaurantList = false;"><span class="glyphicon glyphicon-pencil"></span></button></span></h4>
+                                <p>{{restaurant.cuisine}}</p>
+                                <hr/>
+                            </div>
+                            <div ng-show="showEdit">
+                                <form name ="updateForm" novalidate>
+                                    <!-- Text Boxes and Other User Inputs. Note ng-model binds the values to Angular $scope -->
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="name" placeholder="Restaurant Name" ng-model="restaurant.name" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="address1" placeholder="Address (ex. 123 Street)" ng-model="restaurant.address" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="cuisine" placeholder="Cuisine" ng-model="restaurant.cuisine" required>
+                                    </div>
+                                    
+                                    <button type="submit" class="btn btn-danger btn-block" ng-click="updateRestaurant(restaurant)" ng-disabled="updateForm.$invalid">Submit</button>
+                                </form>
+                            </div>
+                        </div>
+                    </li>
+                </ol>
+            </div>
+        </div>
+
+    </div>
+</div>

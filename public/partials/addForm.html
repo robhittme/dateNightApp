@@ -1,0 +1,41 @@
+<!-- addForm.html -->
+        
+<!-- "Join Team" (Post) Form -->
+<div class="col-md-5">
+
+    <!-- Creates Main Panel -->
+    <div class="panel panel-default">
+
+        <!-- Panel Title -->
+        <div class="panel-heading">
+            <h2 class="panel-title text-center">Add Restaurant <span class="glyphicon glyphicon-map-marker"></span></h2>
+        </div>
+
+        <!-- Panel Body -->
+        <div class="panel-body">
+
+            <!-- Creates Form (novalidate disables HTML validation, Angular will control) -->
+            <form name ="addForm" novalidate>
+
+                <!-- Text Boxes and Other User Inputs. Note ng-model binds the values to Angular $scope -->
+                <div class="form-group">
+                    <input type="text" class="form-control" id="name" placeholder="Restaurant Name" ng-model="formData.name" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="address1" placeholder="Address (ex. 123 Street)" ng-model="formData.address" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="cuisine" placeholder="Cuisine" ng-model="formData.cuisine" required>
+                </div>
+                
+                <div class="form-group">
+                    <!-- Note RefreshLoc button tied to addCtrl. This requests a refresh of the HTML5 verified location. -->
+                    <label for="verified">HTML5 Verified Location? <span><button ng-click="refreshLoc()" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-refresh"></span></button></span></label>
+                    <input type="text" class="form-control" id="verified" placeholder= "Nope (Thanks for spamming my map...)" ng-model="formData.htmlverified" readonly>
+                </div>
+
+                <button type="submit" class="btn btn-danger btn-block" ng-click="createRestaurant()" ng-disabled="addForm.$invalid">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
